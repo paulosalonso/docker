@@ -1,0 +1,26 @@
+# docker run \
+# --env LICENSE=accept \
+# --env MQ_QMGR_NAME=QM1 \
+# --env MQ_APP_PASSWORD=P@ssw0rd \
+# --volume qm1data:/mnt/mqm \
+# --publish 1414:1414 \
+# --publish 9443:9443 \
+# --detach \
+# ibmcom/mq:latest
+
+version: '3'
+
+services:
+  ibmmq:
+    image: ibmcom/mq
+    ports:
+      - 1414:1414
+      - 9443:9443
+    environment:
+      - LICENSE=accept
+      - MQ_QMGR_NAME=QM1
+      - MQ_APP_PASSWORD=P@ssw0rd
+      - MQ_ADMIN_PASSWORD=P@ssw0rd
+#    volumes:
+#      - ./qm1data:/mnt/mqm
+

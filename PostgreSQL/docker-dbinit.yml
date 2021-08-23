@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  postgres_init:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      #- /home/paulo/Documentos/Docker/PostgreSQL:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - postgres
+      
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "mymail@mail.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+    ports:
+      - "16543:80"
+    networks:
+      - postgres
+
+networks: 
+  postgres:
+    driver: bridge
