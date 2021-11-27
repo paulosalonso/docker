@@ -1,14 +1,13 @@
 version: '3'
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:12.0.4
     environment:
       DB_VENDOR: MYSQL
       DB_ADDR: mysql
       DB_USER: root
       DB_PASSWORD: mysql
       DB_DATABASE: keycloak
-      KEYCLOAK_USER: admin
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
     ports:
